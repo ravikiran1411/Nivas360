@@ -1,1 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Prata&display=swap');
 @import "tailwindcss";
+*{
+  font-family:Outfit;
+}
+
+#id1{
+  font-family: "Prata", serif;
+}
+
+a.active {
+    color:orange;
+}
+
+
+
+
+
