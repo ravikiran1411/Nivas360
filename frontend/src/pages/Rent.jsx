@@ -108,8 +108,8 @@ const Rent = () => {
           <PropertyStyle key={index} id={item.id} images={item.images} location={item.location} price={item.price} title={item.title} SqYards={item.SqYards} bhk={item.bhk} purpose={item.purpose} />
         )
 
-        ) 
-
+        )
+         
        } 
       </div>
     </div>
