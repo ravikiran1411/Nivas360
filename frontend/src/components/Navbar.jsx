@@ -24,10 +24,12 @@ const Navbar = () => {
           <NavLink to="/plots" className={({ isActive }) =>`hidden sm:block text-xl font-medium cursor-pointer ${isActive ? "text-orange-400" : "text-white"}`}> Plots</NavLink>
          
           <NavLink to="/whynivas" className={({ isActive }) =>`hidden sm:block text-xl font-medium cursor-pointer ${isActive ? "text-orange-400" : "text-white"}`}>Why Nivas ?</NavLink>
+          <NavLink to="/chat" className={({ isActive }) =>` text-xl font-medium cursor-pointer ${isActive ? "text-orange-400" : "text-white"}`}><img src={assets.chat} className='w-5 h-5 sm:w-8 sm:h-8' /></NavLink>
 
-          <div className="flex gap-4 sm:gap-15 items-center">
-            <Link to='/wishlist' className=''>
+          <div className="flex items-center gap-4 sm:gap-15 items-center">
+            <Link to='/wishlist' className='flex flex-col items-center'>
               <img src={assets.wishlist_icon} alt='' className="w-5 sm:w-6 md:w-8" />
+              <p className='text-[10px] sm:text-sm text-white text-center'>wishlist</p>
             </Link>
 
            {/*  <img className="w-3 md:w-8" src={assets.profile_icon} alt="profile" /> */}

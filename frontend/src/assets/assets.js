@@ -201,6 +201,7 @@ import church from './church.png'
 import masjid from './masjid.png'
 import bus_station from './bus_station.png'
 import airport from './airport.png'
+import chat from './chat.png'
 
 export const assets={
     hero_image,
@@ -226,6 +227,7 @@ export const assets={
     masjid,
     bus_station,
     airport,
+    chat
     
 }
 
