@@ -225,8 +225,7 @@ export const assets={
     church,
     masjid,
     bus_station,
-    airport,
-    
+    airport,    
 }
 
 export const properties = [

@@ -14,9 +14,9 @@ export default function LocationSelector() {
 
   return (
     <>
-      <div onClick={() => setOpen(true)} className="flex bg-slate-200 items-center gap-2 sm:gap-4 border sm:border-2 border-slate-300 p-2 rounded-2xl cursor-pointer" >
-        <p className="text-gray-600 w-25 sm:w-45 text-sm font-medium sm:pl-3">{selectedLocation || "Select your location"} </p>
-        <img src={assets.map_icon} alt="map" className="w-3 h-3 sm:w-7 sm:h-7 hidden sm:block" />
+      <div onClick={() => setOpen(true)} className="flex sm:bg-slate-200 items-center gap-2 sm:gap-4 border sm:border-2 sm:border-slate-300 p-2 rounded-2xl cursor-pointer" >
+        <p className="text-gray-600 w-25 sm:w-45 text-sm font-medium sm:pl-3 hidden sm:block ">{selectedLocation || "Select your location " } </p>
+        <img src={assets.map_icon} alt="map" className="w-3 h-3 sm:w-7 sm:h-7" />
       </div>
 
       { open && (
