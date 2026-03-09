@@ -1,9 +1,11 @@
 const Footer = () => {
   return (
-    <footer className="bg-blue-950 text-slate-100 mt-20">
+    <footer className="bg-slate-900 text-slate-300 mt-20">
 
+      {/* MAIN FOOTER */}
       <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
 
+        {/* BRAND */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-3">
             Nivas<span className="text-orange-500">360</span>
@@ -14,25 +16,25 @@ const Footer = () => {
           </p>
         </div>
 
+        {/* QUICK LINKS */}
         <div>
           <h3 className="text-white font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li className="hover:text-orange-400 cursor-pointer">Sell Property</li>
             <li className="hover:text-orange-400 cursor-pointer">Home</li>
-            <li className="hover:text-orange-400 cursor-pointer">About us</li>
-            <li className="hover:text-orange-400 cursor-pointer">Services</li>
-            <li className="hover:text-orange-400 cursor-pointer">FAQ's</li>
-
-            
+            <li className="hover:text-orange-400 cursor-pointer">Buy</li>
+            <li className="hover:text-orange-400 cursor-pointer">Rent</li>
+            <li className="hover:text-orange-400 cursor-pointer">Sell Property</li>
           </ul>
         </div>
 
+        {/* PROPERTY TYPES */}
         <div>
-          <h3 className="text-slate-300 font-semibold mb-4">Properties</h3>
+          <h3 className="text-white font-semibold mb-4">Properties</h3>
           <ul className="space-y-2 text-sm">
-            <li className="hover:text-orange-400 cursor-pointer">Rental Houses</li>
-            <li className="hover:text-orange-400 cursor-pointer">Houses for Sale</li>
-            <li className="hover:text-orange-400 cursor-pointer">Plots for Sale</li>
+            <li className="hover:text-orange-400 cursor-pointer">Houses</li>
+            <li className="hover:text-orange-400 cursor-pointer">Flats</li>
+            <li className="hover:text-orange-400 cursor-pointer">Plots</li>
+            <li className="hover:text-orange-400 cursor-pointer">Commercial</li>
           </ul>
         </div>
 
@@ -40,7 +42,7 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-semibold mb-4">Contact Us</h3>
           <p className="text-sm text-slate-400 mb-2">
-            Visakhapatnam, India
+            📍 Visakhapatnam, India
           </p>
           <p className="text-sm text-slate-400 mb-2">
             📞 +91 9999999999
@@ -51,6 +53,7 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* BOTTOM BAR */}
       <div className="border-t border-slate-700 py-4 text-center text-sm text-slate-400">
         © {new Date().getFullYear()} Nivas360. All rights reserved.
       </div>
