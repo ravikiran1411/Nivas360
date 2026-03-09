@@ -47,13 +47,9 @@ const App = () => {
       <>
         <Navbar setAdminToken={setAdminToken} />
 
-        {/* SPACE BELOW NAVBAR */}
         <div className="flex mt-6 px-6">
-
-          {/* LEFT SIDEBAR */}
           <Sidebar />
 
-          {/* RIGHT CONTENT */}
           <div className="w-[80%] px-8">
             <div className="bg-white shadow-xl rounded-xl p-8 min-h-[500px]">
 
