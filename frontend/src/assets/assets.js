@@ -201,7 +201,6 @@ import church from './church.png'
 import masjid from './masjid.png'
 import bus_station from './bus_station.png'
 import airport from './airport.png'
-import chat from './chat.png'
 
 export const assets={
     hero_image,
@@ -226,15 +225,8 @@ export const assets={
     church,
     masjid,
     bus_station,
-<<<<<<< HEAD
     airport,    
-=======
-    airport,
-    chat
-    
->>>>>>> abd59d02cefdc5a4dd29f4b18cbdfaa271ca7b5d
 }
-
 export const properties = [
 {
   id: "p1",
