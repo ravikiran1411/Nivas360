@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-import { backendUrl } from "../config";
+import { DataContext } from "../../context/DataContext";
 import { toast } from "react-toastify";
 
 const AddProperty = () => {
+
+  const { backendUrl, token } = useContext(DataContext);
+
   const [data, setData] = useState({
     title: "",
     description: "",
@@ -37,7 +40,7 @@ const AddProperty = () => {
       const res = await axios.post(
         backendUrl + "/api/owner/add-property",
         formData,
-        { headers: { token: localStorage.getItem("token") } }
+        { headers: { token } }
       );
 
       if (res.data.success) {
@@ -45,6 +48,7 @@ const AddProperty = () => {
       } else {
         toast.error(res.data.message);
       }
+
     } catch (error) {
       toast.error(error.message);
     }
@@ -97,7 +101,9 @@ const AddProperty = () => {
       <input type="file" multiple
         onChange={(e)=>setImages([...e.target.files])} />
 
-      <button className="bg-black text-white py-2">ADD</button>
+      <button className="bg-black text-white py-2">
+        ADD
+      </button>
 
     </form>
   );

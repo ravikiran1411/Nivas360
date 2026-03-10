@@ -2,16 +2,34 @@ import chatModel from "../models/chatModel.js";
 import messageModel from "../models/messageModel.js";
 
 // 1.Start chat
-const startChat = async (req,res)=>{
-  const {ownerId} = req.body;
+const startChat = async (req, res) => {
+  try {
+    const { ownerId } = req.body;
+    const userId = req.userId;
 
-  let chat = await chatModel.findOne({participants:{$all:[req.userId,ownerId]}});
+    if (ownerId === userId) {
+      return res.json({success: false,message: "Cannot chat with yourself"});
+    }
 
-  if (!chat) {
-    chat = await chatModel.create({participants:[req.userId,ownerId]});
+    // Check if chat already exists
+    const existingChat = await chatModel.findOne({
+      participants: { $all: [userId, ownerId] }
+    });
+
+    if (existingChat) {
+      return res.json({success: true,chat: existingChat});
+    }
+
+    // Create new chat
+    const newChat = await chatModel.create({
+      participants: [userId, ownerId]
+    });
+
+    res.json({success: true,chat: newChat });
+  } 
+  catch (error) {
+    res.json({ success: false, message: error.message});
   }
-
-  res.json({success:true,chat});
 };
 
 // 2.Send message

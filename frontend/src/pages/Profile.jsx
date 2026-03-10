@@ -83,7 +83,7 @@ const Profile = () => {
         )}
 
         {status === "approved" && (
-          <button onClick={() => window.location.href="http://localhost:5174"}
+          <button onClick={() => navigate("/owner/properties")}
             className="w-full bg-green-600 text-white py-2 rounded mb-4" >
             Go To Owner Dashboard
           </button>

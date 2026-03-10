@@ -181,7 +181,6 @@ import p20 from './p20.jpg'
 import hero_image from './hero_image.png'
 import map_icon from './map_icon.png'
 import menu_icon from './menu_icon.png'
-import nivas_logo from './nivas_logo.png'
 import profile_icon from './profile_icon.png'
 import wishlist_icon from './wishlist_icon.png'
 import search_icon from './search_icon.png'
@@ -202,12 +201,16 @@ import masjid from './masjid.png'
 import bus_station from './bus_station.png'
 import airport from './airport.png'
 import chat from './chat.png'
+import nivas_logo from './nivas_logo.png'
+import add_icon from './add_icon.png'
+import list_icon from './list_icon.png'
+import chat_icon from './chat_icon.png'
+
 
 export const assets={
     hero_image,
     map_icon,
     menu_icon,
-    nivas_logo,
     profile_icon,
     wishlist_icon,
     search_icon,
@@ -227,8 +230,12 @@ export const assets={
     masjid,
     bus_station,
     airport,
-    chat
-    
+    chat,
+    nivas_logo,
+    add_icon,
+    list_icon,
+    chat_icon
+
 }
 
 export const properties = [
