@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import http from "http";
+import "dotenv/config";
 
 import connectDB from "./config/connectDB.js";
 import connectCloudinary from "./config/cloudinary.js";
@@ -13,17 +14,28 @@ import propertyRoutes from "./routes/propertyRoutes.js";
 import wishlistRoutes from "./routes/wishlistRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 
-
 const app = express();
 const server = http.createServer(app);
-
-app.use(cors());
-app.use(express.json());
 
 const port = process.env.PORT || 4000;
 
 connectDB();
 connectCloudinary();
+
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5172",
+      "http://localhost:5173",
+      "https://nivas360-frontend.vercel.app",
+      "https://nivas360-admin.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "token"]
+  })
+);
 
 app.use("/api/user", userRoutes);
 app.use("/api/owner", ownerRoutes);
