@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/request",userAuth,upload.single("document"),requestOwnerPermission);
 
-router.post("/add-property",userAuth,ownerAuth,upload.array("images", 5),addProperty);
+router.post("/add-property",userAuth,ownerAuth,upload.array("images", 7),addProperty);
 
 router.post("/update-property",userAuth,ownerAuth,updateProperty);
 
