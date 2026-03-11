@@ -71,7 +71,7 @@ const Profile = () => {
 
         {status === "none" && (
           <button onClick={() => navigate("/owner-request")}
-              className="bg-red-600 text-white py-2 px-6 rounded mx-auto block" >
+              className="bg-blue-600 text-white py-2 px-6 rounded mx-auto block" >
             Request Owner Access
           </button>
         )}
@@ -84,7 +84,7 @@ const Profile = () => {
 
         {status === "approved" && (
           <button onClick={() => navigate("/owner/properties")}
-              className="bg-red-600 text-white py-2 px-6 rounded mx-auto block" >
+              className="bg-green-600 text-white py-2 px-6 rounded mx-auto block" >
             Go To Owner Dashboard
           </button>
         )}
@@ -95,7 +95,7 @@ const Profile = () => {
           </div>
         )}
 
-        <button onClick={logout}   className="bg-red-600 text-white py-2 px-6 rounded mx-auto block">
+        <button onClick={logout}   className="bg-red-400 mt-4 text-white py-2 px-6 rounded mx-auto block">
           Logout
         </button>
 
