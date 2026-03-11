@@ -18,8 +18,8 @@ import OwnerRequestForm from './pages/OwnerRequestForm'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WhyNivas from './pages/WhyNivas'
 
-/* OWNER IMPORTS */
 import OwnerLayout from "./owner/layout/OwnerLayout"
 import OwnerRoute from "./owner/OwnerRoute"
 import AddProperty from "./owner/pages/AddProperty"
@@ -36,15 +36,11 @@ const App = () => {
   return (
 
     <div className='bg-slate-200'>
-
       <ToastContainer position="top-right" autoClose={3000} />
-
       {!hide && <Navbar />}
 
       <Routes>
-
-        {/* USER ROUTES */}
-
+        <Route path='/whynivas' element={<WhyNivas />} />
         <Route path='/' element={<Home />} />
         <Route path='/chats' element={<Chat />} />
         <Route path='/rent' element={<Rent />} />
@@ -57,28 +53,12 @@ const App = () => {
         <Route path='/profile' element={<Profile />} />
         <Route path='/owner-request' element={<OwnerRequestForm />} />
 
-        {/* OWNER DASHBOARD ROUTES */}
-
-        <Route
-          path="/owner"
-          element={
-            <OwnerRoute>
-              <OwnerLayout />
-            </OwnerRoute>
-          }
-        >
-
-          {/* redirect /owner → /owner/properties */}
+        <Route path="/owner" element={<OwnerRoute><OwnerLayout /></OwnerRoute>}>
           <Route index element={<Navigate to="properties" />} />
-
           <Route path="properties" element={<ListProperties />} />
-
           <Route path="add-property" element={<AddProperty />} />
-
           <Route path="edit-property/:id" element={<EditProperty />} />
-
           <Route path="chat" element={<OwnerChat />} />
-
         </Route>
 
       </Routes>
