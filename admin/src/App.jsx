@@ -21,7 +21,7 @@ const App = () => {
   );
 
   useEffect(() => {
-    if (adminToken && isTokenExpired(adminToken)) {
+    if (adminToken && istokenExpired(adminToken)) {
       localStorage.removeItem("adminToken");
       setAdminToken("");
     }
