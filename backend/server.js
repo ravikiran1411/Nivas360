@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import http from "http";
 
-import connectDB from "./config/connectDb.js";
+import connectDB from "./config/connectDB.js";
 import connectCloudinary from "./config/cloudinary.js";
 import initSocket from "./socket.js";
 
