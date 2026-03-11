@@ -136,17 +136,15 @@ const getDashboardStats = async (req,res)=>{
     const approvedCount = await ownerRequestModel.countDocuments({status:"approved"});
 
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    today.setHours(0,0,0,0);
 
-    const newTodayCount = await ownerRequestModel.countDocuments({status:"pending",createdAt:{$gte:today}});
+    const newTodayCount = await ownerRequestModel.countDocuments({createdAt: { $gte: today }});
 
-    res.json({success: true,stats:{pendingCount,approvedCount,newTodayCount}});
-
+    res.json({success:true,stats:{pendingCount,approvedCount,newTodayCount}});
   } 
-  catch (error) {
-    res.json({success:false, message:error.message });
+  catch(error){
+    res.json({success:false,message:error.message});
   }
 };
-
 
 export {adminLogin,getPendingRequests,getApprovedRequests,approveRequest,rejectRequest,listOwners,removeOwner,getDashboardStats};

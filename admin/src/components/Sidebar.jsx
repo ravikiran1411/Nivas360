@@ -19,9 +19,13 @@ const Sidebar = ({adminToken})=>{
     }
   };
 
-  useEffect(() => {
-    fetchStats();
-  }, []);
+  useEffect(()=>{
+  if(adminToken){
+    fetchStats()
+    const interval = setInterval(fetchStats,4000)
+    return ()=>clearInterval(interval)
+  }
+},[adminToken])
 
   return (
     <div className="w-[20%] min-h-screen bg-white shadow-lg p-6">
