@@ -5,7 +5,7 @@ export const DataContext = createContext();
 
 const DataContextProvider = ({ children }) => {
 
-  const backendUrl = "http://localhost:4000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
   const [properties, setProperties] = useState([]);
   const [LOCATIONS, setLocations] = useState([]);
