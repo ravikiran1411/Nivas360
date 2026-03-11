@@ -7,7 +7,7 @@ const propertySchema = new mongoose.Schema(
     description: {type:String,required:true},
     purpose: {type: String,enum:["rent","sell"],required:true},
     propertyType: {type:String,enum:["flat", "individual-house", "villa", "plot"],required:true},
-    bhk: {type:Number,enum:[1, 2, 3, 4]},
+    bhk: {type:Number,enum:[0, 1, 2, 3]},
     price: {type:Number,required:true},
     SqYards: {type:Number,required:true},
     location: {
