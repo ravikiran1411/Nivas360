@@ -73,7 +73,7 @@ const Plots = () => {
         {plotData.map((item) => (
           <PropertyStyle
             key={item._id}
-            id={item._id}
+            _id={item._id}
             images={item.images}
             location={item.location.city + ", " + item.location.area}
             price={item.price}
