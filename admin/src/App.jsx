@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { isTokenExpired } from "./utils/isTokenExpired";
+import { istokenExpired } from "./utils/istokenExpired";
 
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
@@ -35,7 +35,7 @@ const App = () => {
     }
   }, [adminToken]);
 
-  const isValidAdmin = adminToken && !isTokenExpired(adminToken);
+  const isValidAdmin = adminToken && !istokenExpired(adminToken);
 
   return (
   <div className="bg-gray-100 min-h-screen">
