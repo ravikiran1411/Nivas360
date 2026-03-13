@@ -138,6 +138,8 @@ const getAllProperties = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+
 const getAllCities = async (req, res) => {
   try {
     const cities = await propertyModel.distinct("location.city");
@@ -146,6 +148,22 @@ const getAllCities = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+const removeProperty = async (req, res) => {
+  const property = await propertyModel.findOne({
+    _id: req.body.propertyId,
+    ownerId: req.userId,
+  });
+
+  if (!property) {
+    return res.json({ success: false, message: "Unauthorized" });
+  }
+
+  await property.deleteOne();
+
+  res.json({ success: true, message: "Property removed" });
+};
+
 
 
 export { addProperty,listProperties,updateProperty,removeProperty,getAllProperties,getAllCities };
