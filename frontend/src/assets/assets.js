@@ -206,7 +206,7 @@ import add_icon from './add_icon.png'
 import list_icon from './list_icon.png'
 import chat_icon from './chat_icon.png'
 import house_img from './house_img.jpg'
-
+import location_icon from './location_png'
 
 export const assets={
     house_img,
@@ -236,7 +236,8 @@ export const assets={
     nivas_logo,
     add_icon,
     list_icon,
-    chat_icon
+    chat_icon,
+    location_icon
 
 }
 

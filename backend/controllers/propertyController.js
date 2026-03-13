@@ -57,46 +57,22 @@ const listProperties = async (req, res) => {
 
 
 const updateProperty = async (req, res) => {
+  try {
+    const property = await propertyModel.findOne({
+      _id: req.body.propertyId,
+      ownerId: req.userId
+    });
 
-  try{
-    const { propertyId } = req.body;
-    const property = await propertyModel.findOne({_id:propertyId,ownerId:req.userId});
-
-    if(!property){
+    if (!property) {
       return res.json({ success:false, message:"Unauthorized" });
-    }
-
-    const existingImages = req.body.existingImages ? JSON.parse(req.body.existingImages) : property.images;
-
-    let newImages = [];
-
-    if(req.files && req.files.length > 0){
-
-      newImages = await Promise.all(
-        req.files.map(async(file)=>{
-          const result = await cloudinary.uploader.upload(file.path);
-          return result.secure_url;
-        })
-      );
-
-    }
-
-    const finalImages = [...existingImages, ...newImages];
-
-    if(finalImages.length > 6){
-      return res.json({ success:false, message:"Maximum 6 images allowed" });
     }
 
     property.title = req.body.title;
     property.description = req.body.description;
-
     property.purpose = req.body.purpose;
     property.propertyType = req.body.propertyType;
-
-    property.bhk = req.body.propertyType === "plot" ? undefined : Number(req.body.bhk);
-
+    property.bhk = Number(req.body.bhk);
     property.price = Number(req.body.price);
-
     property.SqYards = Number(req.body.SqYards);
 
     property.location = {
@@ -107,23 +83,36 @@ const updateProperty = async (req, res) => {
 
     property.availability = req.body.availability;
 
-    property.images = finalImages;
-
     if(req.body.parking){
       property.parking = JSON.parse(req.body.parking);
     }
 
+    let images = [];
+
+    if(req.body.existingImages){
+      images = JSON.parse(req.body.existingImages);
+    }
+
+    if(req.files){
+      const uploads = await Promise.all(
+        req.files.map(async(file)=>{
+          const result = await cloudinary.uploader.upload(file.path);
+          return result.secure_url;
+        })
+      );
+
+      images = [...images,...uploads];
+    }
+
+    property.images = images;
     await property.save();
 
     res.json({ success:true, message:"Property updated" });
-
-  }
-  catch(error){
+  } 
+  catch (error) {
     res.json({ success:false, message:error.message });
   }
-
 };
-
 
 const getAllProperties = async (req, res) => {
   try {

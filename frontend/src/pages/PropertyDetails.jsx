@@ -5,11 +5,17 @@ import { assets } from "../assets/assets";
 import axios from "axios";
 
 const PropertyDetails = () => {
-
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { properties, currency, backendUrl, token, saveProperty, savedProperty } = useContext(DataContext);
+  const {
+    properties,
+    currency,
+    backendUrl,
+    token,
+    saveProperty,
+    savedProperty,
+  } = useContext(DataContext);
 
   const [propertyData, setPropertyData] = useState(null);
   const [image, setImage] = useState(null);
@@ -25,7 +31,6 @@ const PropertyDetails = () => {
     if (property.bhk === 1) setBedRoom("1 Bedroom");
     else if (property.bhk === 2) setBedRoom("2 Bedrooms");
     else if (property.bhk === 3) setBedRoom("3 Bedrooms");
-
   }, [id, properties]);
 
   const startChat = async () => {
@@ -35,41 +40,44 @@ const PropertyDetails = () => {
     }
 
     try {
-
-      const res = await axios.post(backendUrl + "/api/chat/start",{ownerId:propertyData.ownerId._id},{headers:{token}});
+      const res = await axios.post(
+        backendUrl + "/api/chat/start",
+        { ownerId: propertyData.ownerId._id },
+        { headers: { token } },
+      );
 
       if (res.data.success) {
         navigate("/chat?chatId=" + res.data.chat._id);
       }
-    } 
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
+  };
+  const handleSave = () => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    saveProperty(propertyData._id);
   };
 
   if (!propertyData) return null;
 
   return (
     <div className="sm:px-8 mt-5 sm:mb-10 bg-slate-50 rounded-lg">
-
       <div className="sm:mx-8 rounded-lg px-2">
         <div className="py-3 sm:pt-5 flex flex-col gap-3 sm:mb-4">
-
           <div className="flex flex-col sm:flex-row justify-between sm:px-8">
-
             <div className="text-sm sm:text-2xl font-medium flex gap-2 items-center">
-
-              <p className="flex gap-2">
-                {propertyData.title}
-              </p>
-
+              <p className='flex gap-2'> <img src={assets.home_icon} className='w-4 h-4 sm:w-8 sm:h-8 ' />
+              {propertyData.title}</p>
             </div>
 
             <div className="text-lg sm:text-3xl font-bold">
-              {currency}{propertyData.price}
+              {currency}
+              {propertyData.price}
               {propertyData.purpose === "rent" && "/Month"}
             </div>
-
           </div>
 
           <div className="flex gap-2 items-center flex-1 text-sm font-medium sm:text-2xl sm:px-8">
@@ -78,7 +86,6 @@ const PropertyDetails = () => {
               {propertyData.location.city}, {propertyData.location.area}
             </p>
           </div>
-
         </div>
 
         <div className="w-full flex flex-col sm:flex-row sm:gap-4">
@@ -92,13 +99,14 @@ const PropertyDetails = () => {
           </div>
 
           <div className="flex min-w-[33%] lg:min-w-0 flex-nowrap overflow-x-scroll md:overflow-hidden gap-5 sm:gap-3 py-5 sm:py-0 sm:grid grid-cols-2">
-
             {propertyData.images.map((img, index) => (
-
-              <img key={index} src={img} onClick={() => setImage(img)}
-                className="w-20 h-20 sm:w-50 sm:h-50 rounded cursor-pointer" />
+              <img
+                key={index}
+                src={img}
+                onClick={() => setImage(img)}
+                className="w-20 h-20 sm:w-50 sm:h-50 rounded cursor-pointer"
+              />
             ))}
-
           </div>
         </div>
 
@@ -114,51 +122,46 @@ const PropertyDetails = () => {
               </p>
 
               <div className="flex gap-4 flex-wrap">
-                <button onClick={startChat}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition cursor-pointer">
+                <button
+                  onClick={startChat}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition cursor-pointer"
+                >
                   Chat Now
                 </button>
 
-                <button onClick={() => saveProperty(propertyData._id)}
+                <button
+                  onClick={handleSave}
                   className={`px-6 py-3 rounded-xl text-white ${
                     savedProperty[propertyData._id]
                       ? "bg-green-600"
                       : "bg-orange-500"
                   }`}
                 >
-                  {savedProperty[propertyData._id]
-                    ? "Saved"
-                    : "Save Property"}
+                  {savedProperty[propertyData._id] ? "Saved" : "Save Property"}
                 </button>
-
               </div>
-
             </div>
 
             <div className="hidden mx-auto sm:flex">
-              <img src={assets.house_img}
-                className="w-1/2 h-1/2 object-cover rounded-2xl opacity-80" />
+              <img
+                src={assets.house_img}
+                className="w-1/2 h-1/2 object-cover rounded-2xl opacity-80"
+              />
             </div>
-
           </div>
-
         </div>
 
         <div className="bg-white px-4 py-2 rounded sm:mt-10 shadow-md">
-
           <p className="text-lg sm:text-3xl font-semibold text-center">
             Property Highlights
           </p>
 
           <div className="flex gap-6 md:justify-between overflow-x-scroll sm:overflow-hidden flex-nowrap sm:flex-4 pt-5 sm:pt-10">
-
             {propertyData.propertyType !== "plot" && (
-
               <div className="flex flex-col items-center gap-5 min-w-[33%] sm:min-w-0">
                 <img src={assets.bed_icon} className="w-7 h-7" />
                 <p>{bedRoom}</p>
               </div>
-
             )}
 
             <div className="flex flex-col gap-5 items-center min-w-[33%] sm:min-w-0">
@@ -172,23 +175,16 @@ const PropertyDetails = () => {
             </div>
 
             <div className="flex flex-col items-center gap-4 min-w-[33%] sm:min-w-0">
-              <p className="border p-1 text-sm font-bold rounded-lg">
-                STATUS
-              </p>
+              <p className="border p-1 text-sm font-bold rounded-lg">STATUS</p>
               <p>{propertyData.availability}</p>
             </div>
           </div>
-
         </div>
 
         <div className="mt-5 sm:mt-10 bg-white shadow-lg pl-2 py-2 sm:px-5">
-
-          <p className="text-lg sm:text-3xl font-semibold">
-            Property Details
-          </p>
+          <p className="text-lg sm:text-3xl font-semibold">Property Details</p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 pt-5 sm:ml-10">
-
             <div>
               <p className="text-blue-600">City</p>
               <p className="text-xl">{propertyData.location.city}</p>
@@ -220,31 +216,21 @@ const PropertyDetails = () => {
                 <p className="text-xl">{propertyData.bhk}</p>
               </div>
             )}
-
           </div>
-
         </div>
 
         <div className="mt-5 sm:mt-10 bg-white shadow-md pl-2 py-2 sm:px-5">
-
-          <p className="text-lg sm:text-3xl font-semibold">
-            Description
-          </p>
+          <p className="text-lg sm:text-3xl font-semibold">Description</p>
 
           <p className="text-sm font-medium py-3 text-gray-600">
             {propertyData.description}
           </p>
-
         </div>
 
         <div className="my-5 sm:my-10 bg-white rounded-lg shadow-md pl-2 py-2 sm:px-5">
-
-          <p className="text-lg sm:text-3xl font-semibold">
-            Nearby Places
-          </p>
+          <p className="text-lg sm:text-3xl font-semibold">Nearby Places</p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3">
-
             <div className="flex flex-col items-center gap-4 pt-5">
               <img src={assets.airport} className="w-8" />
               <p>20km to Airport</p>
@@ -274,13 +260,27 @@ const PropertyDetails = () => {
               <img src={assets.petrol_bunk} className="w-8" />
               <p>1km to Gas Station</p>
             </div>
+            <div className="flex flex-col items-center gap-4 pt-5 sm:pt-10">
+              <img src={assets.temple} alt="hello" className="w-5 sm:w-8" />
+              <p className="text-lg font-medium text-blue-600">50m to Temple</p>
+            </div>
 
+            <div className="flex flex-col items-center gap-4 pt-5 sm:pt-10">
+              <img src={assets.church} alt="hello" className="w-5 sm:w-8" />
+              <p className="text-lg font-medium text-blue-600">
+                100m to Church
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 pt-5 sm:pt-10">
+              <img src={assets.masjid} alt="hello" className="w-5 sm:w-8" />
+              <p className="text-lg font-medium text-blue-600">
+                240m to Masjid
+              </p>
+            </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 };
