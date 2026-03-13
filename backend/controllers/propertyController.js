@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import propertyModel from "../models/propertyModel.js";
 
+//1.Add Property
 const addProperty = async (req, res) => {
   try {
     const images = req.files;
@@ -47,15 +48,7 @@ const addProperty = async (req, res) => {
 };
 
 
-const listProperties = async (req, res) => {
-  const properties = await propertyModel.find({
-    ownerId: req.userId,
-  });
-
-  res.json({ success: true, properties });
-};
-
-
+//2.Update Property
 const updateProperty = async (req, res) => {
   try {
     const property = await propertyModel.findOne({
@@ -71,19 +64,24 @@ const updateProperty = async (req, res) => {
     property.description = req.body.description;
     property.purpose = req.body.purpose;
     property.propertyType = req.body.propertyType;
-    property.bhk = Number(req.body.bhk);
+
+    property.bhk = req.body.propertyType === "plot" ? undefined : Number(req.body.bhk);
+
     property.price = Number(req.body.price);
     property.SqYards = Number(req.body.SqYards);
 
     property.location = {
-      city:req.body.city,
-      area:req.body.area,
-      pincode:Number(req.body.pincode)
+      city: req.body.city,
+      area: req.body.area,
+      pincode: Number(req.body.pincode)
     };
 
     property.availability = req.body.availability;
 
-    if(req.body.parking){
+    if(req.body.propertyType === "plot"){
+      property.parking = { car:false, bike:false };
+    }
+    else if(req.body.parking){
       property.parking = JSON.parse(req.body.parking);
     }
 
@@ -93,7 +91,8 @@ const updateProperty = async (req, res) => {
       images = JSON.parse(req.body.existingImages);
     }
 
-    if(req.files){
+    if(req.files && req.files.length > 0){
+
       const uploads = await Promise.all(
         req.files.map(async(file)=>{
           const result = await cloudinary.uploader.upload(file.path);
@@ -101,18 +100,30 @@ const updateProperty = async (req, res) => {
         })
       );
 
-      images = [...images,...uploads];
+      images = [...images, ...uploads];
     }
 
     property.images = images;
-    await property.save();
 
-    res.json({ success:true, message:"Property updated" });
-  } 
-  catch (error) {
-    res.json({ success:false, message:error.message });
+    await property.save();
+    res.json({success:true, message:"Property updated successfully"});
+  }
+  catch(error){
+    res.json({success:false,message:error.message });
   }
 };
+
+
+//3.list
+const listProperties = async (req, res) => {
+  const properties = await propertyModel.find({
+    ownerId: req.userId,
+  });
+
+  res.json({ success: true, properties });
+};
+
+
 
 const getAllProperties = async (req, res) => {
   try {
