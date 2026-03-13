@@ -205,9 +205,11 @@ import nivas_logo from './nivas_logo.png'
 import add_icon from './add_icon.png'
 import list_icon from './list_icon.png'
 import chat_icon from './chat_icon.png'
+import house_img from './house_img.jpg'
 
 
 export const assets={
+    house_img,
     hero_image,
     map_icon,
     menu_icon,

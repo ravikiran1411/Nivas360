@@ -16,7 +16,8 @@ const PropertyStyle = ({
 
   const {currency} = useContext(DataContext)
 
-  return (
+  return ( 
+    
     <Link
       to={`/property/${_id}`}
       className="w-full bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition flex flex-col sm:flex-row gap-4 cursor-pointer"
