@@ -206,7 +206,7 @@ import add_icon from './add_icon.png'
 import list_icon from './list_icon.png'
 import chat_icon from './chat_icon.png'
 import house_img from './house_img.jpg'
-import location_icon from './location_png'
+import location_icon from './location_icon.png'
 
 export const assets={
     house_img,
