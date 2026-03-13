@@ -18,6 +18,10 @@ const propertySchema = new mongoose.Schema(
 
     images: {type:[String],required:true},
     availability: {type:String,required:true},
+    parking:{
+    car:{type:Boolean,default:false},
+    bike:{type:Boolean,default:false}
+  }
   },
   {timestamps:true}
 );
