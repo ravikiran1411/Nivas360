@@ -73,10 +73,10 @@ const House = () => {
           <p className='text-lg mb-3 font-medium'>BHK Type</p>
 
           <div className='flex flex-col gap-2 text-sm font-light'>
-            <p><input type='checkbox' value='1BHK' onChange={togglebhktype} />1BHK</p>
-            <p><input type='checkbox' value='2BHK' onChange={togglebhktype} />2BHK</p>
-            <p><input type='checkbox' value='3BHK' onChange={togglebhktype} />3BHK</p>
-            <p><input type='checkbox' value='4BHK' onChange={togglebhktype} />4BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='1BHK' onChange={togglebhktype} />1BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='2BHK' onChange={togglebhktype} />2BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='3BHK' onChange={togglebhktype} />3BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='4BHK' onChange={togglebhktype} />4BHK</p>
           </div>
 
         </div>
@@ -86,16 +86,16 @@ const House = () => {
           <p className='text-lg font-medium mb-3'>Price Range</p>
 
           <div className='flex flex-col gap-2 text-sm font-light'>
-            <p><input type='radio' value='below40' name='price' onChange={togglepricerange} /> Below 40L</p>
-            <p><input type='radio' value='40-60' name='price' onChange={togglepricerange} /> 40L-60L</p>
-            <p><input type='radio' value='60-80' name='price' onChange={togglepricerange} /> 60L-80L</p>
-            <p><input type='radio' value='above80' name='price' onChange={togglepricerange} /> Above 80L</p>
+            <p className='flex gap-2'><input type='radio' value='below40' name='price' onChange={togglepricerange} /> Below 40L</p>
+            <p className='flex gap-2'><input type='radio' value='40-60' name='price' onChange={togglepricerange} /> 40L-60L</p>
+            <p className='flex gap-2'><input type='radio' value='60-80' name='price' onChange={togglepricerange} /> 60L-80L</p>
+            <p className='flex gap-2'><input type='radio' value='above80' name='price' onChange={togglepricerange} /> Above 80L</p>
           </div>
 
         </div>
       </div>
 
-      <div className='flex flex-col gap-2 sm:ml-5 sm:mt-10 p-4 rounded'>
+      <div className='sm:w-full lg:mr-15 flex flex-col gap-2 sm:ml-5 sm:mt-10 p-4 rounded'>
 
         {houseData.map((item) => (
           <PropertyStyle

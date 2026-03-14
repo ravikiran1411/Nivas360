@@ -28,7 +28,7 @@ const HaveProperty = () => {
   }
 
   return (
-    <div className='flex items-center justify-center gap-5 sm:gap-25 sm:mx-15 bg-slate-100 rounded-md my-3 sm:my-15 py-2 sm:py-9'>
+    <div className='flex items-center justify-center gap-5 sm:gap-25 mx-5 sm:mx-15 bg-slate-100 rounded-md my-3 sm:my-15 py-2 sm:py-9'>
 
       <div>
         <img src={assets.post_property} alt='' className='w-30 sm:w-70' />

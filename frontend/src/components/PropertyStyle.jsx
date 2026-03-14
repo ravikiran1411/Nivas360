@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
 import { Link } from 'react-router-dom'
+import { assets } from '../assets/assets'
 
 const PropertyStyle = ({
   _id,
@@ -30,9 +31,13 @@ const PropertyStyle = ({
       <div className="flex flex-col sm:flex-row sm:justify-between flex-1 gap-4">
         <div className="flex flex-col gap-3">
           <p className="text-lg font-semibold text-slate-800">{title}</p>
+            <p className=" sm:hidden text-xl font-bold text-slate-900">
+            {currency}{price}
+            {purpose === "rent" && "/Month"}
+          </p>
 
           <p className="text-sm text-slate-500">
-            📍 {location?.city}, {location?.area}
+          <img className='w-5' src={assets.map_icon} /> {location?.city}, {location?.area} 
           </p>
 
           <div className="flex gap-6">
@@ -48,7 +53,7 @@ const PropertyStyle = ({
           </div>
         </div>
 
-        <div className="flex flex-col justify-between items-end">
+        <div className="hidden sm:flex flex-col justify-between">
           <p className="text-xl font-bold text-slate-900">
             {currency}{price}
             {purpose === "rent" && "/Month"}

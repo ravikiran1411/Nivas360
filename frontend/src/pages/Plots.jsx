@@ -59,16 +59,16 @@ const Plots = () => {
           <p className='text-lg font-medium mb-3'>Price Range</p>
 
           <div className='flex flex-col gap-2 text-sm font-light'>
-            <p><input type='radio' value='below20' name='price' onChange={togglepricerange} /> Below 20L</p>
-            <p><input type='radio' value='20-30' name='price' onChange={togglepricerange} /> 20L-30L</p>
-            <p><input type='radio' value='30-40' name='price' onChange={togglepricerange} /> 30L-40L</p>
-            <p><input type='radio' value='above40' name='price' onChange={togglepricerange} /> Above 40L</p>
+            <p className='flex gap-2'><input type='radio' value='below20' name='price' onChange={togglepricerange} /> Below 20L</p>
+            <p className='flex gap-2'><input type='radio' value='20-30' name='price' onChange={togglepricerange} /> 20L-30L</p>
+            <p className='flex gap-2'><input type='radio' value='30-40' name='price' onChange={togglepricerange} /> 30L-40L</p>
+            <p className='flex gap-2'><input type='radio' value='above40' name='price' onChange={togglepricerange} /> Above 40L</p>
           </div>
 
         </div>
       </div>
 
-      <div className='flex flex-col gap-2 sm:ml-5 sm:mt-10 p-4 rounded'>
+      <div className='sm:w-full lg:mr-15 flex flex-col gap-2 sm:ml-5 sm:mt-10 p-4 rounded'>
 
         {plotData.map((item) => (
           <PropertyStyle

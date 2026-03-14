@@ -64,7 +64,7 @@ const PropertyDetails = () => {
   if (!propertyData) return null;
 
   return (
-    <div className="sm:px-8 mt-5 sm:mb-10 bg-slate-50 rounded-lg">
+    <div className="mx-5 sm:px-8 mt-5 sm:mb-10 bg-slate-50 rounded-lg">
       <div className="sm:mx-8 rounded-lg px-2">
         <div className="py-3 sm:pt-5 flex flex-col gap-3 sm:mb-4">
           <div className="flex flex-col sm:flex-row justify-between sm:px-8">
@@ -83,7 +83,7 @@ const PropertyDetails = () => {
           <div className="flex gap-2 items-center flex-1 text-sm font-medium sm:text-2xl sm:px-8">
             <img src={assets.location_icon} className="w-4 sm:w-7" />
             <p>
-              {propertyData.location.city}, {propertyData.location.area}
+              {propertyData.location.area}, {propertyData.location.city}
             </p>
           </div>
         </div>
@@ -112,26 +112,20 @@ const PropertyDetails = () => {
 
         <div className="mt-16 bg-white shadow-md rounded-3xl overflow-hidden">
           <div className="grid sm:grid-cols-2 gap-20 items-center mx-auto">
-            <div className="p-10 flex flex-col gap-6 mx-auto">
-              <p className="text-3xl font-semibold text-gray-800">
-                Connect With Owner
-              </p>
-
-              <p className="text-gray-500">
-                Chat directly with property owner.
-              </p>
-
+            <div className="p-2 sm:p-10 flex flex-col gap-3 sm:gap-6 mx-auto">
+              <p className="text-xl sm:text-3xl font-semibold text-gray-800">Connect With Owner</p>
+              <p className="text-gray-500 text-sm font-light">Chat directly with property owner.</p>
               <div className="flex gap-4 flex-wrap">
                 <button
                   onClick={startChat}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition cursor-pointer"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-6 sm:py-3 rounded-xl transition cursor-pointer"
                 >
                   Chat Now
                 </button>
 
                 <button
                   onClick={handleSave}
-                  className={`px-6 py-3 rounded-xl text-white ${
+                  className={`px-3 sm:px-6 py-3 rounded-xl text-white ${
                     savedProperty[propertyData._id]
                       ? "bg-green-600"
                       : "bg-orange-500"
@@ -143,40 +137,38 @@ const PropertyDetails = () => {
             </div>
 
             <div className="hidden mx-auto sm:flex">
-              <img
-                src={assets.house_img}
-                className="w-1/2 h-1/2 object-cover rounded-2xl opacity-80"
-              />
+              <img src={assets.house_img} className="w-1/2 h-1/2 object-cover rounded-2xl opacity-80"/>
             </div>
+
           </div>
         </div>
 
-        <div className="bg-white px-4 py-2 rounded sm:mt-10 shadow-md">
+        <div className="bg-white px-4 py-3 rounded sm:mt-10 shadow-md mt-5">
           <p className="text-lg sm:text-3xl font-semibold text-center">
             Property Highlights
           </p>
 
-          <div className="flex gap-6 md:justify-between overflow-x-scroll sm:overflow-hidden flex-nowrap sm:flex-4 pt-5 sm:pt-10">
+          <div className="flex gap-6 md:justify-between overflow-x-scroll sm:overflow-hidden flex-nowrap sm:flex-4 pt-5 sm:pt-10 sm:5 md:px-7">
             {propertyData.propertyType !== "plot" && (
               <div className="flex flex-col items-center gap-5 min-w-[33%] sm:min-w-0">
                 <img src={assets.bed_icon} className="w-7 h-7" />
-                <p>{bedRoom}</p>
+                <p className="text-sm sm:text-md font-light sm:font-medium text-black">{bedRoom}</p>
               </div>
             )}
 
             <div className="flex flex-col gap-5 items-center min-w-[33%] sm:min-w-0">
               <img src={assets.plots_icon} className="w-7 h-7" />
-              <p>{propertyData.SqYards} SqYards</p>
+              <p className="text-sm sm:text-md font-light sm:font-medium text-black">{propertyData.SqYards} SqYards</p>
             </div>
 
             <div className="flex flex-col items-center gap-5 min-w-[33%] sm:min-w-0">
               <img src={assets.parking} className="w-7 h-7" />
-              <p>Bike Parking</p>
+              <p className="text-sm sm:text-md font-light sm:font-medium text-black">Bike Parking</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 min-w-[33%] sm:min-w-0">
               <p className="border p-1 text-sm font-bold rounded-lg">STATUS</p>
-              <p>{propertyData.availability}</p>
+              <p className="text-sm sm:text-md font-light sm:font-medium text-black">{propertyData.availability}</p>
             </div>
           </div>
         </div>
@@ -187,33 +179,33 @@ const PropertyDetails = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 pt-5 sm:ml-10">
             <div>
               <p className="text-blue-600">City</p>
-              <p className="text-xl">{propertyData.location.city}</p>
+              <p className="text-md sm:text-xl">{propertyData.location.city}</p>
             </div>
 
             <div>
               <p className="text-blue-600">Area</p>
-              <p className="text-xl">{propertyData.location.area}</p>
+              <p className="text-md sm:text-xl">{propertyData.location.area}</p>
             </div>
 
             <div>
               <p className="text-blue-600">SqYards</p>
-              <p className="text-xl">{propertyData.SqYards}</p>
+              <p className="text-md sm:text-xl">{propertyData.SqYards}</p>
             </div>
 
             <div>
               <p className="text-blue-600">Property Type</p>
-              <p className="text-xl">{propertyData.propertyType}</p>
+              <p className="text-md sm:text-xl">{propertyData.propertyType}</p>
             </div>
 
             <div>
               <p className="text-blue-600">Purpose</p>
-              <p className="text-xl">{propertyData.purpose}</p>
+              <p className="text-md sm:text-xl">{propertyData.purpose}</p>
             </div>
 
             {propertyData.propertyType !== "plot" && (
               <div>
                 <p className="text-blue-600">BHK</p>
-                <p className="text-xl">{propertyData.bhk}</p>
+                <p className="text-md sm:text-xl">{propertyData.bhk}</p>
               </div>
             )}
           </div>
@@ -233,50 +225,46 @@ const PropertyDetails = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3">
             <div className="flex flex-col items-center gap-4 pt-5">
               <img src={assets.airport} className="w-8" />
-              <p>20km to Airport</p>
+              <p className="text-sm sm:text-lg font-medium">20km to Airport</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-5">
               <img src={assets.bus_station} className="w-8" />
-              <p>1.5km to Bus Station</p>
+              <p className="text-sm sm:text-lg font-medium">1.5km to Bus Station</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-5">
               <img src={assets.railwayStation} className="w-8" />
-              <p>1.5km to Railway Station</p>
+              <p className="text-sm sm:text-lg font-medium">1.5km to Railway Station</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-5">
               <img src={assets.hospital} className="w-8" />
-              <p>500m to Hospital</p>
+              <p className="text-sm sm:text-lg font-medium">500m to Hospital</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-5">
               <img src={assets.shopping} className="w-8" />
-              <p>600m to Shopping Mall</p>
+              <p className="text-sm sm:text-lg font-medium">600m to Shopping Mall</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-5">
               <img src={assets.petrol_bunk} className="w-8" />
-              <p>1km to Gas Station</p>
+              <p className="text-sm sm:text-lg font-medium">1km to Gas Station</p>
             </div>
             <div className="flex flex-col items-center gap-4 pt-5 sm:pt-10">
               <img src={assets.temple} alt="hello" className="w-5 sm:w-8" />
-              <p className="text-lg font-medium text-blue-600">50m to Temple</p>
+              <p className="text-sm sm:text-lg font-medium">50m to Temple</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-5 sm:pt-10">
               <img src={assets.church} alt="hello" className="w-5 sm:w-8" />
-              <p className="text-lg font-medium text-blue-600">
-                100m to Church
-              </p>
+              <p className="text-sm sm:text-lg font-medium ">100m to Church</p>
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-5 sm:pt-10">
               <img src={assets.masjid} alt="hello" className="w-5 sm:w-8" />
-              <p className="text-lg font-medium text-blue-600">
-                240m to Masjid
-              </p>
+              <p className="text-sm sm:text-lg font-medium ">240m to Masjid</p>
             </div>
           </div>
         </div>

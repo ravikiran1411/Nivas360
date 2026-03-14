@@ -75,10 +75,10 @@ const Rent = () => {
           <p className='text-lg mb-3 font-medium'>BHK Type</p>
 
           <div className='flex flex-col gap-2 text-sm font-light'>
-            <p><input type='checkbox' value='1BHK' onChange={togglebhktype} />1BHK</p>
-            <p><input type='checkbox' value='2BHK' onChange={togglebhktype} />2BHK</p>
-            <p><input type='checkbox' value='3BHK' onChange={togglebhktype} />3BHK</p>
-            <p><input type='checkbox' value='4BHK' onChange={togglebhktype} />4BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='1BHK' onChange={togglebhktype} />1BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='2BHK' onChange={togglebhktype} />2BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='3BHK' onChange={togglebhktype} />3BHK</p>
+            <p className='flex gap-2'><input type='checkbox' value='4BHK' onChange={togglebhktype} />4BHK</p>
           </div>
 
         </div>
@@ -88,23 +88,23 @@ const Rent = () => {
           <p className='text-lg font-medium mb-3'>Price Range</p>
 
           <div className='flex flex-col gap-2 text-sm font-light'>
-            <p><input type='radio' value='below10k' name='price' onChange={togglepricerange} /> Below {currency}10,000</p>
-            <p><input type='radio' value='10-15' name='price' onChange={togglepricerange} />{currency}10,000-{currency}15,000</p>
-            <p><input type='radio' value='15-20' name='price' onChange={togglepricerange} />{currency}15,000-{currency}20,000</p>
-            <p><input type='radio' value='above20' name='price' onChange={togglepricerange} />Above {currency}20,000</p>
+            <p className='flex gap-2'><input type='radio' value='below10k' name='price' onChange={togglepricerange} /> Below {currency}10,000</p>
+            <p className='flex gap-2'><input type='radio' value='10-15' name='price' onChange={togglepricerange} />{currency}10,000-{currency}15,000</p>
+            <p className='flex gap-2'><input type='radio' value='15-20' name='price' onChange={togglepricerange} />{currency}15,000-{currency}20,000</p>
+            <p className='flex gap-2'><input type='radio' value='above20' name='price' onChange={togglepricerange} />Above {currency}20,000</p>
           </div>
 
         </div>
       </div>
 
-      <div className='flex flex-col gap-2 sm:ml-5 sm:mt-10 p-4 rounded'>
+      <div className='sm:w-full lg:mr-15 flex flex-col gap-2 sm:ml-5 sm:mt-10 p-4 rounded'>
 
         {rentalData.map((item) => (
           <PropertyStyle
             key={item._id}
             _id={item._id}
             images={item.images}
-            location={item.location.city + ", " + item.location.area}
+            location={item.location.city + " " + item.location.area} 
             price={item.price}
             title={item.title}
             SqYards={item.SqYards}
