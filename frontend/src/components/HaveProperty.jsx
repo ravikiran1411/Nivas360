@@ -45,10 +45,7 @@ const HaveProperty = () => {
         </p>
 
         <div className='flex justify-center mt-2'>
-          <button
-            onClick={handlePostProperty}
-            className='bg-orange-500 text-[15px] text-white px-3 sm:px-6 py-1 sm:py-3 sm:font-bold rounded sm:rounded-xl hover:bg-orange-600'
-          >
+          <button onClick={handlePostProperty} className='bg-orange-500 text-[15px] text-white px-3 sm:px-6 py-1 sm:py-3 sm:font-bold rounded sm:rounded-xl hover:bg-orange-600'>
             Post Your Property
           </button>
         </div>
@@ -59,4 +56,4 @@ const HaveProperty = () => {
   )
 }
 
-export default HaveProperty
+export default HaveProperty;

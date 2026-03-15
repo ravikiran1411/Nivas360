@@ -81,6 +81,8 @@ const Plots = () => {
             SqYards={item.SqYards}
             bhk={item.bhk}
             purpose={item.purpose}
+            propertyType={item.propertyType}
+            ownerId={item.ownerId?._id}
           />
         ))}
 
