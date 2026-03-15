@@ -41,17 +41,18 @@ const Chat = () => {
         setMessages(res.data.messages);
         socket?.emit("joinChat", chatId);
       }
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
     if (!token || !socket) return;
+  
     const loadChats = async () => {
       try {
         const res = await axios.get(backendUrl + "/api/chat/my-chats",{headers:{token}});
-
         if (res.data.success) {
           setChats(res.data.chats);
           if (chatIdFromUrl) {

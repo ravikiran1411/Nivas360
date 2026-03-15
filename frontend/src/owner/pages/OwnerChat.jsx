@@ -32,7 +32,6 @@ const OwnerChat = () => {
 
   const fetchMessages = async (chatId) => {
     const res = await axios.get(backendUrl + "/api/chat/messages/" + chatId,{headers:{token}});
-
     setMessages(res.data.messages);
 
     if (socket) {
