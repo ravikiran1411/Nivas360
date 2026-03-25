@@ -22,6 +22,7 @@ const PropertyStyle = ({
 
   const startChat = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     if (!token) {
       navigate("/login");
       return;
