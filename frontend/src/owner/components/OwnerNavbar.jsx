@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import logo from "../../assets/nivas_logo.png"
+import { assets } from "../../assets/assets"
 
 const OwnerNavbar = () => {
 
@@ -16,7 +16,7 @@ const OwnerNavbar = () => {
 
       <div className="flex items-center gap-3">
 
-        <img src={logo} className="w-8" />
+        <img src={assets.nivas_logo} className="w-8" />
 
         <h2 className="text-xl font-bold">
           Owner Dashboard
