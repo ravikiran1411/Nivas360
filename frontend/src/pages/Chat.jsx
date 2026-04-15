@@ -213,7 +213,7 @@ const Chat = () => {
                 <img
                   src={assets.send_button}
                   alt="send"
-                  className="w-6 h-6"
+                  className="w-6 h-6 cursor-pointer"
                 />
               </button>
             </div>
