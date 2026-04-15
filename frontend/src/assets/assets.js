@@ -207,6 +207,7 @@ import list_icon from './list_icon.png'
 import chat_icon from './chat_icon.png'
 import house_img from './house_img.webp'
 import location_icon from './location_icon.png'
+import send_button from './send_button.png'
 
 export const assets={
     house_img,
@@ -237,7 +238,8 @@ export const assets={
     add_icon,
     list_icon,
     chat_icon,
-    location_icon
+    location_icon,
+    send_button
 
 }
 
