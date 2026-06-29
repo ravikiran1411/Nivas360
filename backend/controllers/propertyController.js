@@ -123,6 +123,16 @@ const listProperties = async (req, res) => {
   res.json({ success: true, properties });
 };
 
+const allListProperties = async (req,res) => {
+  try {
+    const properties = await propertyModel.find({});
+
+    res.json({success:true,properties})
+
+  } catch (error) {
+    res.json({success:false,message:error.message})
+  }
+}
 
 
 const getAllProperties = async (req, res) => {
@@ -166,4 +176,4 @@ const removeProperty = async (req, res) => {
 
 
 
-export { addProperty,listProperties,updateProperty,removeProperty,getAllProperties,getAllCities };
+export { addProperty,listProperties,updateProperty,removeProperty,getAllProperties,getAllCities ,allListProperties };

@@ -22,20 +22,27 @@ const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
 
+
+const allowedOrigins = [
+  "http://localhost:5172",
+  "http://localhost:5173",
+  "https://nivas360-frontend.vercel.app",
+  "https://nivas360-admin.vercel.app"
+]
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS blocked"));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5172",
-      "http://localhost:5173",
-      "https://nivas360-frontend.vercel.app",
-      "https://nivas360-admin.vercel.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization", "token"]
-  })
-);
 
 app.use("/api/user", userRoutes);
 app.use("/api/owner", ownerRoutes);
